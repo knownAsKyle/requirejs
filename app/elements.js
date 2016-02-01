@@ -1,10 +1,10 @@
 define(function() {
     return {
-        header: header,
-        list: list,
-        addButton: addButton,
-        removeButton: removeButton,
-        input: input,
+        header: header(),
+        list: list(),
+        addButton: addButton(),
+        removeButton: removeButton(),
+        input: input(),
     };
 
     function header() {

@@ -1,20 +1,21 @@
 define(function(require) {
-    var lists = require("lists");
+    var helper = require("helper");
     var e = require("elements");
-    e.header().innerText = "Require js ";
-    e.addButton().addEventListener("click", handleAddClick);
-    e.input().addEventListener("keypress", function(e) {
-        if (e.keyCode === 13) {
-            handleAddClick();
-        }
-    });
+    var lists = require("lists");
+    e.header.innerText = "Require js ";
+    e.addButton.addEventListener("click", handleAddClick);
+    e.input.addEventListener("keypress", listenForEnter);
 
     function handleAddClick() {
-        var entered = lists.add(e.list(), e.input().value);
-        if (entered) {
-            e.input().value = "";
+        if (lists.add(e.list, e.input.value)) {
+            e.input.value = "";
         }
     }
 
-    var sortable = Sortable.create(e.list(),{ animation: 150});
+    function listenForEnter(e) {
+        if (helper.checkForEnterPress(e)) {
+            handleAddClick();
+        }
+    }
+    var sortable = Sortable.create(e.list, helper.constants.sortOptions);
 });
